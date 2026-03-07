@@ -3425,13 +3425,15 @@ main {
 
     .before-after-grid {
         display: flex;
-        overflow: visible;
+        overflow: hidden;
+        gap: 0;
         transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .comparison-card {
         min-width: 100%;
         width: 100%;
+        flex-shrink: 0;
         aspect-ratio: 4/3;
         border-radius: 0;
     }
