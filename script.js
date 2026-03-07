@@ -191,7 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const reviewNext = document.querySelector('.review-next');
 
     if (reviewsTrack && reviewCards.length > 0) {
-        let currentReviewIndex = 1; // Start with second card as center
+        // Start with first card on mobile, second on desktop
+        let currentReviewIndex = window.innerWidth <= 1200 ? 0 : 1;
 
         const updateReviews = () => {
             // Update active classes
@@ -204,18 +205,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.innerWidth > 1200) {
                 // Desktop rigid 3-card frame
                 shift = (currentReviewIndex - 1) * -410;
-            } else if (window.innerWidth > 576) {
-                // Tablet centering
-                const cardWidth = 380;
-                const gap = 30;
-                const step = cardWidth + gap;
-                shift = (window.innerWidth / 2) - ((currentReviewIndex * step) + (cardWidth / 2));
             } else {
-                // Mobile centering
-                const cardWidth = 300;
-                const gap = 15;
+                // Tablet and mobile: use actual card dimensions for precise centering
+                const firstCard = reviewCards[0];
+                const cardWidth = firstCard.offsetWidth;
+
+                // Read gap and padding from the track container
+                const trackStyle = window.getComputedStyle(reviewsTrack);
+                const gap = parseFloat(trackStyle.gap) || parseFloat(trackStyle.columnGap) || 0;
+                const paddingLeft = parseFloat(trackStyle.paddingLeft) || 0;
+
                 const step = cardWidth + gap;
-                shift = (window.innerWidth / 2) - ((currentReviewIndex * step) + (cardWidth / 2));
+
+                // Center the active card in viewport, accounting for track padding
+                shift = (window.innerWidth / 2) - (paddingLeft + (currentReviewIndex * step) + (cardWidth / 2));
             }
 
             reviewsTrack.style.transform = `translateX(${shift}px)`;
@@ -308,9 +311,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.getElementById('mobileMenu');
 
     if (burgerBtn && mobileMenu) {
-        burgerBtn.addEventListener('click', () => {
+        burgerBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             burgerBtn.classList.toggle('active');
             mobileMenu.classList.toggle('active');
+
+            // Force remove any browser-applied outline/border
+            burgerBtn.style.outline = 'none';
+            burgerBtn.style.border = 'none';
+            burgerBtn.style.boxShadow = 'none';
+            burgerBtn.blur();
         });
 
         // Close menu if link inside is clicked

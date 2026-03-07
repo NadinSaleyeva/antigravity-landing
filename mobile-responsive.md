@@ -57,9 +57,9 @@
 
 ### 10. Отступы секций
 - Все секции уменьшены с 100px → **60px** (480px) или **50px/40px** для некоторых
-- Timeline, Process, Materials, Insurance, Guarantee, FAQ, Reviews, Contacts, Footer — все обновлены
+- Timeline, Process, Materials, Guarantee, FAQ, Reviews, Contacts, Footer — все обновлены
 
-### 11. Блок гарантий
+### 11. Блок качества работ
 - `guarantee-box` padding: **24px 16px** (было 30px 20px)
 - `border-radius: 12px`
 - Уменьшен размер CTA кнопки внутри
