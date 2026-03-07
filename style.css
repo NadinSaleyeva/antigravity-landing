@@ -1722,17 +1722,16 @@ main {
     justify-content: center;
     width: 56px;
     height: 56px;
-    background: white;
+    background: transparent;
     border-radius: 12px;
-    border: 1px solid #EAEAEA;
+    border: none;
     text-decoration: none;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .v3-icon:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    border-color: transparent;
+    box-shadow: none;
 }
 
 .v3-divider {
