@@ -186,45 +186,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === REVIEWS SLIDER ===
     const reviewsTrack = document.querySelector('.reviews-track');
+    const reviewsWrapper = document.querySelector('.reviews-track-wrapper');
     const reviewCards = document.querySelectorAll('.review-card');
     const reviewPrev = document.querySelector('.review-prev');
     const reviewNext = document.querySelector('.review-next');
+    const reviewDots = document.querySelectorAll('.review-dot');
 
     if (reviewsTrack && reviewCards.length > 0) {
-        // Start with first card on mobile, second on desktop
         let currentReviewIndex = window.innerWidth <= 1200 ? 0 : 1;
+        const isMobile = () => window.innerWidth <= 576;
 
         const updateReviews = () => {
-            // Update active classes
             reviewCards.forEach((card, i) => {
                 card.classList.toggle('active', i === currentReviewIndex);
             });
 
-            // Calculate shift manually
-            let shift = 0;
-            if (window.innerWidth > 1200) {
-                // Desktop rigid 3-card frame
-                shift = (currentReviewIndex - 1) * -410;
+            if (!isMobile()) {
+                // Desktop/Tablet: Use transform
+                let shift = 0;
+                if (window.innerWidth > 1200) {
+                    shift = (currentReviewIndex - 1) * -410;
+                } else {
+                    const firstCard = reviewCards[0];
+                    const cardWidth = firstCard.offsetWidth;
+                    const trackStyle = window.getComputedStyle(reviewsTrack);
+                    const gap = parseFloat(trackStyle.gap) || parseFloat(trackStyle.columnGap) || 0;
+                    const paddingLeft = parseFloat(trackStyle.paddingLeft) || 0;
+                    const step = cardWidth + gap;
+                    shift = (window.innerWidth / 2) - (paddingLeft + (currentReviewIndex * step) + (cardWidth / 2));
+                }
+                reviewsTrack.style.transform = `translateX(${shift}px)`;
             } else {
-                // Tablet and mobile: use actual card dimensions for precise centering
-                const firstCard = reviewCards[0];
-                const cardWidth = firstCard.offsetWidth;
-
-                // Read gap and padding from the track container
-                const trackStyle = window.getComputedStyle(reviewsTrack);
-                const gap = parseFloat(trackStyle.gap) || parseFloat(trackStyle.columnGap) || 0;
-                const paddingLeft = parseFloat(trackStyle.paddingLeft) || 0;
-
-                const step = cardWidth + gap;
-
-                // Center the active card in viewport, accounting for track padding
-                shift = (window.innerWidth / 2) - (paddingLeft + (currentReviewIndex * step) + (cardWidth / 2));
+                // Mobile: Update dots
+                reviewDots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentReviewIndex);
+                });
             }
-
-            reviewsTrack.style.transform = `translateX(${shift}px)`;
         };
 
-        // Arrow navigation
+        // Arrow navigation (desktop only)
         if (reviewPrev && reviewNext) {
             reviewPrev.addEventListener('click', () => {
                 if (currentReviewIndex > 0) {
@@ -241,10 +241,55 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Window resize needs recalculation to keep it centered
-        window.addEventListener('resize', updateReviews);
+        // Mobile: Track scroll position to update active card and dots
+        if (reviewsWrapper) {
+            reviewsWrapper.addEventListener('scroll', () => {
+                if (isMobile()) {
+                    const wrapperCenter = reviewsWrapper.scrollLeft + reviewsWrapper.offsetWidth / 2;
+                    let closestIndex = 0;
+                    let closestDistance = Infinity;
 
-        // Initial setup
+                    reviewCards.forEach((card, i) => {
+                        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+                        const distance = Math.abs(cardCenter - wrapperCenter);
+                        if (distance < closestDistance) {
+                            closestDistance = distance;
+                            closestIndex = i;
+                        }
+                    });
+
+                    if (closestIndex !== currentReviewIndex) {
+                        currentReviewIndex = closestIndex;
+                        reviewCards.forEach((card, i) => {
+                            card.classList.toggle('active', i === currentReviewIndex);
+                        });
+                        reviewDots.forEach((dot, i) => {
+                            dot.classList.toggle('active', i === currentReviewIndex);
+                        });
+                    }
+                }
+            });
+        }
+
+        // Dot navigation (mobile only)
+        if (reviewDots.length > 0) {
+            reviewDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    if (isMobile()) {
+                        currentReviewIndex = index;
+                        const cardWidth = reviewCards[0].offsetWidth;
+                        const gap = 20;
+                        const scrollPosition = currentReviewIndex * (cardWidth + gap);
+                        reviewsWrapper.scrollTo({
+                            left: scrollPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        window.addEventListener('resize', updateReviews);
         updateReviews();
     }
 

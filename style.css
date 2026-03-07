@@ -2952,6 +2952,68 @@ main {
     }
 }
 
+/* Mobile scroll indicators */
+.review-scroll-indicators {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.review-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.review-dot.active {
+    background: var(--color-primary-red);
+    width: 24px;
+    border-radius: 4px;
+}
+
+@media (max-width: 576px) {
+    .reviews-slider-container {
+        padding: 0;
+    }
+
+    .reviews-track-wrapper {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        max-width: 100%;
+    }
+
+    .reviews-track-wrapper::-webkit-scrollbar {
+        display: none;
+    }
+
+    .reviews-track {
+        padding: 40px calc(50vw - 140px);
+        gap: 20px;
+        transition: none;
+    }
+
+    .review-card {
+        flex: 0 0 280px;
+        padding: 28px 20px;
+        border-radius: 16px;
+        gap: 16px;
+    }
+
+    .review-nav-arrow {
+        display: none;
+    }
+
+    .review-scroll-indicators {
+        display: flex;
+    }
+}
+
 @media (max-width: 768px) {
     .reviews-slider-container {
         padding: 0 15px;
