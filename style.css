@@ -1440,6 +1440,10 @@ main {
     gap: 30px;
 }
 
+.before-after-wrapper {
+    overflow: visible;
+}
+
 .comparison-card {
     position: relative;
     aspect-ratio: 16/9;
@@ -3415,9 +3419,13 @@ main {
         font-size: 32px;
     }
 
+    .before-after-wrapper {
+        overflow: hidden;
+    }
+
     .before-after-grid {
         display: flex;
-        overflow: hidden;
+        overflow: visible;
         transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
