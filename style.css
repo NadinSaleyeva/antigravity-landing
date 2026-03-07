@@ -2567,13 +2567,13 @@ main {
 }
 
 .guarantee-card {
-    background: white;
+    background: transparent;
     border-radius: 20px;
     padding: 40px 32px;
     text-align: center;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: none;
     transition: all 0.3s ease;
-    border: 1px solid #F0F0F0;
+    border: none;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -2599,6 +2599,12 @@ main {
     padding: 16px 0 16px 36px;
     position: relative;
     font-weight: 500;
+    text-shadow:
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white,
+        0 0 8px rgba(255, 255, 255, 0.8);
 }
 
 .guarantee-card--single li::before {
@@ -2608,11 +2614,17 @@ main {
     color: var(--color-primary-red);
     font-weight: 700;
     font-size: 20px;
+    text-shadow:
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white,
+        0 0 8px rgba(255, 255, 255, 0.9);
 }
 
 .guarantee-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: none;
 }
 
 .guarantee-badge {
