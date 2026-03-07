@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const offset = -currentIndex * 100;
             grid.style.transform = `translateX(${offset}%)`;
 
+            console.log('Carousel update:', { currentIndex, offset, totalItems, width: window.innerWidth });
+
             // Active dot
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentIndex);
@@ -132,6 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateCarousel(currentIndex - 1);
             }
         }
+    }
+
+    // Initialize carousel on page load for mobile
+    if (window.innerWidth <= 992) {
+        updateCarousel(0);
     }
 
     // Resize fix
