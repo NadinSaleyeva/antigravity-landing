@@ -2983,6 +2983,7 @@ main {
     .reviews-track-wrapper {
         overflow-x: auto;
         overflow-y: hidden;
+        scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         max-width: 100%;
@@ -3003,6 +3004,7 @@ main {
         padding: 28px 20px;
         border-radius: 16px;
         gap: 16px;
+        scroll-snap-align: center;
     }
 
     .review-nav-arrow {
