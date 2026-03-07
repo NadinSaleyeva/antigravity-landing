@@ -3435,9 +3435,34 @@ main {
         width: 100%;
         flex-shrink: 0;
         height: 75vw;
+        min-height: 280px;
+        max-height: 500px;
         border-radius: 0;
         position: relative;
         overflow: hidden;
+    }
+
+    .comparison-card .comparison-img {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .comparison-card .comparison-img img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
+    }
+
+    .comparison-card .comparison-img.before {
+        z-index: 2;
+    }
+
+    .comparison-card .comparison-img.after {
+        z-index: 1;
     }
 
     .mobile-nav-comparison {
@@ -3521,11 +3546,6 @@ main {
 
     .section-title {
         font-size: 28px;
-    }
-
-    .comparison-card {
-        aspect-ratio: 1/1;
-        /* Square cards on mobile look better */
     }
 }
 
