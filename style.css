@@ -3840,15 +3840,30 @@ main {
     }
 
     .materials-compact-card {
-        padding: 30px 20px;
-        border-radius: 16px;
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        padding: 20px 16px;
+        gap: 16px;
     }
 
     .compact-logo {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 16px;
-        padding: 16px;
+        width: 60px;
+        height: 60px;
+        margin: 0;
+        padding: 12px;
+        flex-shrink: 0;
+    }
+
+    .equipment-icon-large {
+        width: 60px;
+        height: 60px;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .equipment-icon-large iconify-icon {
+        font-size: 30px;
     }
 
     .compact-icon {
@@ -3861,12 +3876,14 @@ main {
     }
 
     .materials-compact-card h3 {
-        font-size: 15px;
+        font-size: 14px;
+        margin-bottom: 12px;
+        text-align: left;
     }
 
     .compact-features li {
-        font-size: 13px;
-        padding: 8px 0;
+        font-size: 12px;
+        padding: 6px 0;
     }
 
     .compact-features iconify-icon {
