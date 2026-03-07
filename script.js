@@ -84,24 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const offset = -currentIndex * 100;
             grid.style.transform = `translateX(${offset}%)`;
 
-            console.log('Carousel update:', {
-                currentIndex,
-                offset,
-                totalItems,
-                width: window.innerWidth,
-                gridTransform: grid.style.transform
-            });
-
-            // Force visibility of all cards
-            comparisonCards.forEach((card, i) => {
-                console.log(`Card ${i}:`, {
-                    display: window.getComputedStyle(card).display,
-                    width: window.getComputedStyle(card).width,
-                    minWidth: window.getComputedStyle(card).minWidth,
-                    position: window.getComputedStyle(card).position
-                });
-            });
-
             // Active dot
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentIndex);
@@ -150,11 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 updateCarousel(currentIndex - 1);
             }
         }
-    }
-
-    // Initialize carousel on page load for mobile
-    if (window.innerWidth <= 992) {
-        updateCarousel(0);
     }
 
     // Resize fix
