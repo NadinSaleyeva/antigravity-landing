@@ -88,6 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
             dots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === currentIndex);
             });
+
+            // Reset all comparison sliders to center position
+            comparisonCards.forEach(card => {
+                const slider = card.querySelector('.comparison-slider');
+                const beforeImg = card.querySelector('.comparison-img.before');
+                if (slider && beforeImg) {
+                    slider.style.left = '50%';
+                    beforeImg.style.clipPath = 'inset(0 50% 0 0)';
+                }
+            });
         }
     };
 
