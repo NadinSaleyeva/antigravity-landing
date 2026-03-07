@@ -1371,15 +1371,28 @@ main {
     }
 
     .timeline-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .time-value {
-        font-size: 40px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
 
     .timeline-card {
-        padding: 30px 20px;
+        padding: 20px 12px;
+    }
+
+    .time-value {
+        font-size: 32px;
+    }
+
+    .time-unit {
+        font-size: 11px;
+    }
+
+    .timeline-card__title {
+        font-size: 13px;
+    }
+
+    .timeline-card__desc {
+        font-size: 11px;
     }
 }
 
