@@ -84,7 +84,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const offset = -currentIndex * 100;
             grid.style.transform = `translateX(${offset}%)`;
 
-            console.log('Carousel update:', { currentIndex, offset, totalItems, width: window.innerWidth });
+            console.log('Carousel update:', {
+                currentIndex,
+                offset,
+                totalItems,
+                width: window.innerWidth,
+                gridTransform: grid.style.transform
+            });
+
+            // Force visibility of all cards
+            comparisonCards.forEach((card, i) => {
+                console.log(`Card ${i}:`, {
+                    display: window.getComputedStyle(card).display,
+                    width: window.getComputedStyle(card).width,
+                    minWidth: window.getComputedStyle(card).minWidth,
+                    position: window.getComputedStyle(card).position
+                });
+            });
 
             // Active dot
             dots.forEach((dot, i) => {
