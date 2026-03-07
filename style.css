@@ -228,7 +228,7 @@ img {
 
 .header__socials {
     display: flex;
-    gap: 12px;
+    gap: 6px;
     color: var(--color-primary-red);
     flex-wrap: nowrap;
     align-items: center;
@@ -3233,7 +3233,7 @@ main {
 
     .header__socials {
         display: flex;
-        gap: 8px;
+        gap: 4px;
     }
 
     .header__socials a {
