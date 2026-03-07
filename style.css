@@ -3393,24 +3393,30 @@ main {
     }
 
     .materials-compact-card {
-        padding: 28px 20px;
-        border-radius: 16px;
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        padding: 20px 16px;
+        gap: 16px;
     }
 
     .equipment-icon-large {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
+        margin: 0;
+        flex-shrink: 0;
     }
 
     .equipment-icon-large iconify-icon {
-        font-size: 40px;
+        font-size: 36px;
     }
 
     .compact-logo {
         width: 70px;
         height: 70px;
-        margin-bottom: 16px;
+        margin: 0;
         padding: 14px;
+        flex-shrink: 0;
     }
 
     .materials-compact-card h3 {
