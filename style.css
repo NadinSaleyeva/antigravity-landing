@@ -3935,8 +3935,12 @@ main {
     }
 
     .map-route-btn {
-        padding: 12px 16px;
-        font-size: 13px;
+        width: 300px;
+        max-width: 100%;
+        padding: 16px 20px;
+        font-size: 14px;
+        min-height: 44px;
+        justify-content: flex-start;
     }
 
     .map-card {
