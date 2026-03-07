@@ -3111,15 +3111,15 @@ main {
     .map-card-address {
         padding: 20px;
         flex-direction: column;
-        align-items: stretch;
+        align-items: flex-start;
         gap: 15px;
         margin-top: 20px;
     }
 
     .map-route-btn {
-        width: 100%;
-        justify-content: center;
-        text-align: center;
+        width: 300px;
+        max-width: 100%;
+        justify-content: flex-start;
     }
 
     .contact-data-side {
