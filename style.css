@@ -2599,12 +2599,13 @@ main {
 .guarantee-card--single ul {
     list-style: none;
     padding: 0;
-    margin: 0;
-    width: 100%;
-    text-align: center;
+    margin: 0 auto;
+    width: fit-content;
+    max-width: 100%;
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 8px;
 }
 
@@ -2615,7 +2616,7 @@ main {
     padding: 16px 0;
     position: relative;
     font-weight: 500;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 12px;
     text-shadow:
