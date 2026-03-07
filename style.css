@@ -2341,6 +2341,12 @@ main {
     letter-spacing: 0.5px;
 }
 
+.card-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 .compact-features {
     list-style: none;
     padding: 0;
