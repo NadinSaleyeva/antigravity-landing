@@ -3896,11 +3896,24 @@ main {
     }
 
     .compact-logo {
-        width: 60px;
-        height: 60px;
+
+    /* Узкие логотипы для мобильных (-m.webp) */
+    .compact-logo {
+        width: 70px;
+        height: 90px;
         margin: 0;
-        padding: 12px;
+        padding: 0;
         flex-shrink: 0;
+    }
+
+    .compact-logo img {
+        border-radius: 8px;
+        object-fit: contain;
+    }
+
+    /* Уменьшаем gap - текст занимает больше места */
+    .materials-compact-card {
+        gap: 10px;
     }
 
     .equipment-icon-large {
@@ -4062,16 +4075,44 @@ main {
         right: 16px;
     }
 
+
+    /* ВАРИАНТ 1: Усиленная пульсация */
     .fab-v2-call {
-        padding: 10px 14px;
+        padding: 16px 22px;
+        border-radius: 50px;
+        box-shadow: 0 8px 25px rgba(206, 53, 60, 0.5);
+        animation: pulse-strong 1.5s infinite;
     }
 
-    .fab-v2-call-text strong {
-        font-size: 13px;
+    .fab-v2-call .fab-v2-call-text strong {
+        font-size: 16px;
+        font-weight: 800;
     }
 
-    .fab-v2-call-text span {
-        font-size: 8px;
+    .fab-v2-call .fab-v2-call-text span {
+        font-size: 10px;
+    }
+
+    .fab-v2-call iconify-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    @keyframes pulse-strong {
+        0% {
+            box-shadow: 0 0 0 0 rgba(206, 53, 60, 0.7);
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+        70% {
+            box-shadow: 0 0 0 15px rgba(206, 53, 60, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(206, 53, 60, 0);
+            transform: scale(1);
+        }
     }
 
     /* FIX: Working hours block in contacts */
